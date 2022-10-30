@@ -322,6 +322,17 @@ classDiagram
         +play(Board) Cell
     }
 
+    class Board{
+        -Cell[][] cells
+        +Board(int, int): Board
+    }
+
+    class Cell{
+        -int x
+        -int y
+        -Symbol symbol
+    }
+
     PlayingStrategy <|-- RandomPlayingStrategy
     PlayingStrategy <|-- MinMaxPlayingStrategy
     PlayingStrategy <|-- AplhaBetaPlayingStrategy
@@ -332,6 +343,8 @@ classDiagram
     Player <|-- BotPlayer
     Game "1"--*"*" Player
     HumanPlayer "*" --o "1" User
+     Game "1" --* "1" Board
+    Board "1" --* "*" Cell
 
 ```
 
