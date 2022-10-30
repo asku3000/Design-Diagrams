@@ -1,6 +1,6 @@
 ### Tic Tac Toe
 
-### v1: Initial Design
+## v1: Initial Design
 
 ```mermaid
 classDiagram
@@ -51,18 +51,20 @@ Problems
 * OCP & SRP violations in play() method based on the difficulty level.
 * Huge memory consumption- multiple instances of the player will be created for multiple games. Each instances has a new photo.
 
-## Common contract - `Player parent class`
+## Solutions
+
+### Common contract - `Player parent class`
 - common beahviour - `play()`
 - common attr - `symbol`
 
-## Tight coupling
+### Tight coupling
 - HumanPlayer
 - BotPlayer
 - Player[] players
 
-## OCP and SRP violation in play method - `Strategy Pattern`
+### OCP and SRP violation in play method - `Strategy Pattern`
 
-## Huge memory consumption - `Flyweight Pattern`
+### Huge memory consumption - `Flyweight Pattern`
 
 
 
