@@ -93,6 +93,49 @@ classDiagram
 - BotPlayer
 - Player[] players
 
+```mermaid
+classDiagram
+
+    class Game{
+        -Board board
+        -Player[] players
+        +register(HumanPlayer) HumanPlayer
+        +startGame(HumanPlayer, BotPlayer, int row, int column) Board
+        +makeMove(PlayerId, int x, int y) Board
+    }
+
+    class Player {
+        <<abstract>>
+        -Symbol symbol
+        +play(Board)* Cell
+    }
+
+    class HumanPlayer{
+        -String name
+        -String email
+        -String photo
+        +play(Board) Cell
+    }
+
+    class BotPlayer{
+        -Level level
+        +play(Board) Cell
+    }
+
+    Player <|-- HumanPlayer
+    Player <|-- BotPlayer
+    Game "1"--*"*" Player
+
+```
+
+### Now
+
+* ~~There is no common contract (generic player) for Human and Bot Player to be used in methods such as make move.~~
+* ~~Human Player cannot play with human player. There is tight coupling between Game and different types of players. It is not extinsible to support multiple players.~~
+* OCP & SRP violations in play() method based on the difficulty level.
+* Huge memory consumption- multiple instances of the player will be created for multiple games. Each instances has a new photo.
+
+
 ### <b>OCP and SRP violation in play method - `Strategy Pattern`</b>
 
 ### <b>Huge memory consumption - `Flyweight Pattern`</b>
