@@ -343,7 +343,7 @@ classDiagram
     Player <|-- BotPlayer
     Game "1"--*"*" Player
     HumanPlayer "*" --o "1" User
-     Game "1" --* "1" Board
+    Game "1" --* "1" Board
     Board "1" --* "*" Cell
 
 ```
