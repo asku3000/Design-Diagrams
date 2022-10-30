@@ -53,18 +53,49 @@ Problems
 
 ## Solutions
 
-### Common contract - `Player parent class`
+### <b>Common contract - `Player parent class`</b>
 - common beahviour - `play()`
 - common attr - `symbol`
 
-### Tight coupling
+```mermaid
+classDiagram
+    class Player {
+        <<abstract>>
+        -Symbol symbol
+        +play(Board)* Cell
+    }
+
+    class HumanPlayer{
+        -String name
+        -String email
+        -String photo
+        +play(Board) Cell
+    }
+
+    class BotPlayer{
+        -Level level
+        +play(Board) Cell
+    }
+
+    Player <|-- HumanPlayer
+    Player <|-- BotPlayer
+
+```
+### Now
+
+* ~~There is no common contract (generic player) for Human and Bot Player to be used in methods such as make move.~~
+* Human Player cannot play with human player. There is tight coupling between Game and different types of players. It is not extinsible to support multiple players.
+* OCP & SRP violations in play() method based on the difficulty level.
+* Huge memory consumption- multiple instances of the player will be created for multiple games. Each instances has a new photo.
+
+### <b>Tight coupling</b>
 - HumanPlayer
 - BotPlayer
 - Player[] players
 
-### OCP and SRP violation in play method - `Strategy Pattern`
+### <b>OCP and SRP violation in play method - `Strategy Pattern`</b>
 
-### Huge memory consumption - `Flyweight Pattern`
+### <b>Huge memory consumption - `Flyweight Pattern`</b>
 
 
 
