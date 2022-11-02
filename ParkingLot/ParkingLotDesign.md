@@ -65,3 +65,33 @@ Build an online parking lot management system that can support the following req
   * Small - 50, 80
   * Medium - 80, 100
   * Large - 100, 120
+
+## VISUALIZATION
+
+![Visulization](https://user-images.githubusercontent.com/30684146/199560295-f24aef2e-d1ba-4036-9932-6b55cc3991f3.png) 
+
+## ACTORS
+1. Customer
+2. Parking Attendant
+3. Admin
+
+### Admin
+ 
+Use cases: 
+1. Create a parking lot
+2. Create a parking floor
+3. Add new parking spots
+4. Update status of a parking lot
+
+
+### Parking Attendant
+Use Cases:
+1. Check empty slots
+2. Issue a ticket
+3. Collect payment
+4. Checkout
+
+### Customer
+Use Cases:
+1. Pay
+2. Check status
