@@ -104,29 +104,32 @@ left to right direction
 actor ParkingAttendant
 actor Customer
 actor Admin
-rectangle ParkingLot{
-    Admin -> (Add a parking lot)
-    Admin -> (Add a parking floor)
-    Admin -> (Add a parking spot)
-    Admin -> (Update status of parking spot)
+
+rectangle PARKING_LOT {
+    Admin --> (Add a parking lot)
+    Admin --> (Add a parking floor)
+    Admin --> (Add a parking spot)
+    Admin --> (Update status of parking spot)
 
     usecase "Pay" as Pay
     usecase "Pay Online" as PayOnline
     usecase "Pay Cash" as PayCash
 
-    Customer -> (Pay)
-    Customer -> (Check spot's status)
+    Customer --> (Pay)
+    Customer --> (Check spot's status)
 
-    Pay .> (PayOnline) : extends
-    Pay .> (PayCash) : extends
+    PayOnline .> (Pay) : extends
+    PayCash .> (Pay) : extends
 
-    ParkingAttendant -> (Check empty slots)
-    ParkingAttendant -> (Issue a ticket)
-    ParkingAttendant -> (collect payment)
-    ParkingAttendant -> (checkout)
 
-    Pay .> (Allocate a slot) : includes
+    ParkingAttendant --> (Check empty slots)
+    ParkingAttendant --> (Issue a ticket)
+    ParkingAttendant --> (Collect payment)
+    ParkingAttendant --> (Checkout)
+
+    (Issue a ticket) .> (Allocate a slot) : includes
     Checkout .> (CheckPaymentStatus) : includes
+
 }
 
 @enduml
